@@ -4,32 +4,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>My GitHub Website</title>
+    <title>RyanLabs</title>
     <style>
+        /* Basic page setup */
         body {
-            background-color: black;
-            color: white;
-            font-family: Arial, sans-serif;
-            text-align: center;
             margin: 0;
             padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(black, grey);
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
         }
+
+        /* Styling for the "RyanLabs" text */
         h1 {
-            margin-top: 20%;
+            font-size: 4rem;
+            color: white;
+            animation: glow 3s ease-in-out infinite, float 5s ease-in-out infinite, resize 5s ease-in-out infinite;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.5);
         }
-        a {
-            color: #00ffcc;
-            text-decoration: none;
-            font-size: 18px;
+
+        /* Keyframes for the floating movement (up, down, left, right) */
+        @keyframes float {
+            0% {
+                transform: translate(0px, 0px);
+            }
+            25% {
+                transform: translate(-10px, 10px);
+            }
+            50% {
+                transform: translate(10px, -10px);
+            }
+            75% {
+                transform: translate(-10px, -10px);
+            }
+            100% {
+                transform: translate(10px, 10px);
+            }
         }
-        a:hover {
-            text-decoration: underline;
+
+        /* Keyframes for resizing the text (bigger and smaller) */
+        @keyframes resize {
+            0%, 100% {
+                font-size: 4rem;
+            }
+            50% {
+                font-size: 4.5rem;
+            }
+        }
+
+        /* Keyframes for the glowing effect (glow and stop glowing) */
+        @keyframes glow {
+            0%, 100% {
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.5);
+            }
+            50% {
+                text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 40px rgba(255, 255, 255, 0.8);
+            }
         }
     </style>
 </head>
 <body>
-    <h1>Welcome to My GitHub Website</h1>
-    <p>This is a simple webpage with a black background.</p>
-    <a href="https://github.com/yourusername" target="_blank">Visit My GitHub Profile</a>
+    <h1>RyanLabs</h1>
 </body>
 </html>
