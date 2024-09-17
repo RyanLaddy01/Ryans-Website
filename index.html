@@ -13,7 +13,7 @@
             height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start; /* Align text higher */
             background: linear-gradient(black, grey);
             font-family: 'Arial', sans-serif;
             overflow: hidden;
@@ -23,26 +23,28 @@
         h1 {
             font-size: 4rem;
             color: white;
-            animation: glow 3s ease-in-out infinite, float 5s ease-in-out infinite, resize 5s ease-in-out infinite;
+            position: relative;
+            top: 20vh; /* Position the text higher on the page */
+            animation: glow 3s ease-in-out infinite, float 10s ease-in-out infinite, resize 5s ease-in-out infinite;
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.5);
         }
 
-        /* Keyframes for the floating movement (up, down, left, right) */
+        /* Keyframes for the floating movement (smooth loop) */
         @keyframes float {
             0% {
                 transform: translate(0px, 0px);
             }
             25% {
-                transform: translate(-10px, 10px);
+                transform: translate(10px, -10px);
             }
             50% {
-                transform: translate(10px, -10px);
+                transform: translate(0px, -20px);
             }
             75% {
                 transform: translate(-10px, -10px);
             }
             100% {
-                transform: translate(10px, 10px);
+                transform: translate(0px, 0px);
             }
         }
 
