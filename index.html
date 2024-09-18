@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>RyanLabs</title>
+    <!-- Link to Google Fonts for a more playful, bubbly font -->
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        /* Reset basic page setup */
+        /* Basic Reset */
         * {
             margin: 0;
             padding: 0;
@@ -17,7 +19,7 @@
         body {
             height: 100vh;
             background: linear-gradient(to bottom, #001f3f, black); /* Dark blue to black */
-            font-family: 'Arial', sans-serif;
+            font-family: 'Baloo 2', cursive; /* Bubbly font */
             overflow: hidden;
             display: flex;
             justify-content: center;
@@ -26,10 +28,10 @@
 
         /* "RyanLabs" text animation */
         h1 {
-            font-size: 4rem;
-            color: #00ccff;
+            font-size: 5rem; /* Increased font size for a more prominent effect */
+            color: #00ccff; /* Light blue color */
             position: absolute;
-            top: 10vh; /* Higher up */
+            top: 12vh; /* Position it higher */
             left: 50vw;
             transform: translateX(-50%);
             animation: glow 3s ease-in-out infinite, float 10s ease-in-out infinite, resize 5s ease-in-out infinite;
@@ -58,10 +60,10 @@
         /* Resize effect */
         @keyframes resize {
             0%, 100% {
-                font-size: 4rem;
+                font-size: 5rem;
             }
             50% {
-                font-size: 4.5rem;
+                font-size: 5.5rem;
             }
         }
 
@@ -77,23 +79,24 @@
 
         /* Menu button styling */
         .menuButton {
-            background-color: #003366; /* Dark blue */
+            background-color: #005580; /* Darker blue */
             border: none;
             padding: 15px;
             margin: 10px 0;
             width: 200px;
             text-align: center;
-            font-size: 16px;
+            font-size: 18px;
             color: white;
-            border-radius: 5px;
+            border-radius: 30px; /* Rounded button for a more "bubbly" look */
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.3s ease;
             position: relative;
             z-index: 1;
         }
 
         .menuButton:hover {
-            background-color: #005580; /* Lighter blue on hover */
+            background-color: #0077b3; /* Lighter blue on hover */
+            transform: scale(1.05); /* Subtle zoom effect */
         }
 
         /* Button container to group buttons */
@@ -112,7 +115,7 @@
             bottom: -100%;
             width: 100%;
             height: 50%;
-            background-color: rgba(0, 0, 0, 0.9);
+            background-color: rgba(0, 0, 0, 0.95); /* Slightly transparent black */
             transition: bottom 0.5s ease;
             color: white;
             display: flex;
@@ -132,7 +135,7 @@
             position: absolute;
             right: 20px;
             top: 20px;
-            font-size: 24px;
+            font-size: 28px; /* Slightly larger X */
             color: white;
             cursor: pointer;
         }
@@ -145,12 +148,12 @@
         /* Responsive adjustments */
         @media screen and (max-width: 768px) {
             h1 {
-                font-size: 3rem;
+                font-size: 3.5rem;
             }
 
             .menuButton {
                 width: 150px;
-                font-size: 14px;
+                font-size: 16px;
             }
 
             .slideMenu {
