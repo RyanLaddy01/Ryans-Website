@@ -11,7 +11,7 @@
             margin: 0;
             padding: 0;
             height: 100vh;
-            background: linear-gradient(black, #001f3f); /* Black to Dark Blue gradient */
+            background: linear-gradient(black, #001f3f); /* Black to dark blue gradient */
             font-family: 'Arial', sans-serif;
             overflow: hidden;
         }
@@ -19,10 +19,10 @@
         /* Styling for the "RyanLabs" text */
         h1 {
             font-size: 4rem;
-            color: #00ccff; /* Light blue color for text */
+            color: #00ccff; /* Light blue text */
             position: relative;
-            top: 15vh; /* Position the text higher on the page */
-            left: 10vw;
+            top: 15vh; /* Higher on the page */
+            left: 55vw; /* Move text more to the right */
             animation: glow 3s ease-in-out infinite, float 10s ease-in-out infinite, resize 5s ease-in-out infinite;
             text-shadow: 0 0 10px rgba(0, 204, 255, 0.8), 0 0 20px rgba(0, 204, 255, 0.5); /* Light blue glow */
         }
@@ -67,42 +67,8 @@
         }
 
         /* Menu button styling */
-        #menuToggle {
-            position: absolute;
-            left: 10px;
-            top: 20px;
-            background-color: #001f3f; /* Dark blue button */
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            font-size: 18px;
-            color: white;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-
-        #menuToggle:hover {
-            background-color: #003366; /* Lighter blue on hover */
-        }
-
-        /* Side menu styles */
-        #sideMenu {
-            position: fixed;
-            left: -250px; /* Initially hidden */
-            top: 0;
-            width: 250px;
-            height: 100%;
-            background-color: #001f3f; /* Dark blue background */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            transition: left 0.5s ease;
-        }
-
-        /* Buttons inside the menu */
         .menuButton {
-            background-color: #003366; /* Slightly lighter blue for buttons */
+            background-color: #003366; /* Slightly lighter blue */
             border: none;
             padding: 15px;
             margin: 10px;
@@ -113,15 +79,50 @@
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s;
+            position: absolute;
+            left: 10px;
+            top: 20px;
         }
 
         .menuButton:hover {
             background-color: #005580; /* Even lighter blue on hover */
         }
 
-        /* Open state for the menu */
-        #sideMenu.open {
+        /* Slide-up menu styles */
+        .slideMenu {
+            position: fixed;
             left: 0;
+            bottom: -100%; /* Hidden initially */
+            width: 100%;
+            height: 50%; /* Adjust height as needed */
+            background-color: rgba(0, 0, 0, 0.9);
+            transition: bottom 0.5s ease;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* Menu content styling */
+        .menuContent {
+            font-size: 24px;
+        }
+
+        /* "X" button to close the slide-up menu */
+        .closeButton {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Open state for the slide-up menu */
+        .slideMenu.open {
+            bottom: 0;
         }
     </style>
 </head>
@@ -129,24 +130,60 @@
 
     <h1>RyanLabs</h1>
 
-    <!-- Menu button to toggle the menu -->
-    <button id="menuToggle">☰ Menu</button>
+    <!-- Menu buttons to trigger the slide-up menu -->
+    <button class="menuButton" data-menu="homeMenu">Home</button>
+    <button class="menuButton" data-menu="aboutMenu" style="top: 80px;">About</button>
+    <button class="menuButton" data-menu="servicesMenu" style="top: 140px;">Services</button>
+    <button class="menuButton" data-menu="contactMenu" style="top: 200px;">Contact</button>
 
-    <!-- Side menu -->
-    <div id="sideMenu">
-        <button class="menuButton">Home</button>
-        <button class="menuButton">About</button>
-        <button class="menuButton">Services</button>
-        <button class="menuButton">Contact</button>
+    <!-- Slide-up menus for each button -->
+    <div id="homeMenu" class="slideMenu">
+        <span class="closeButton">&times;</span>
+        <div class="menuContent">
+            Welcome to the Home section!
+        </div>
+    </div>
+
+    <div id="aboutMenu" class="slideMenu">
+        <span class="closeButton">&times;</span>
+        <div class="menuContent">
+            Learn more About us!
+        </div>
+    </div>
+
+    <div id="servicesMenu" class="slideMenu">
+        <span class="closeButton">&times;</span>
+        <div class="menuContent">
+            Explore our Services!
+        </div>
+    </div>
+
+    <div id="contactMenu" class="slideMenu">
+        <span class="closeButton">&times;</span>
+        <div class="menuContent">
+            Get in touch through the Contact section!
+        </div>
     </div>
 
     <script>
-        // JavaScript to toggle the side menu
-        const menuToggle = document.getElementById('menuToggle');
-        const sideMenu = document.getElementById('sideMenu');
+        // JavaScript to handle the slide-up menu and close button functionality
+        const menuButtons = document.querySelectorAll('.menuButton');
+        const slideMenus = document.querySelectorAll('.slideMenu');
+        const closeButtons = document.querySelectorAll('.closeButton');
 
-        menuToggle.addEventListener('click', () => {
-            sideMenu.classList.toggle('open');
+        // Function to open the appropriate menu
+        menuButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const menuId = button.getAttribute('data-menu');
+                document.getElementById(menuId).classList.add('open');
+            });
+        });
+
+        // Function to close the menu when the "X" is clicked
+        closeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                button.parentElement.classList.remove('open');
+            });
         });
     </script>
 
