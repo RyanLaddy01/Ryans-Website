@@ -11,9 +11,6 @@
             margin: 0;
             padding: 0;
             height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start; /* Align text higher */
             background: linear-gradient(black, grey);
             font-family: 'Arial', sans-serif;
             overflow: hidden;
@@ -24,12 +21,13 @@
             font-size: 4rem;
             color: white;
             position: relative;
-            top: 20vh; /* Position the text higher on the page */
+            top: 15vh; /* Position the text higher on the page */
+            left: 10vw;
             animation: glow 3s ease-in-out infinite, float 10s ease-in-out infinite, resize 5s ease-in-out infinite;
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.5);
         }
 
-        /* Keyframes for the floating movement (smooth loop) */
+        /* Floating animation for seamless loop */
         @keyframes float {
             0% {
                 transform: translate(0px, 0px);
@@ -48,7 +46,7 @@
             }
         }
 
-        /* Keyframes for resizing the text (bigger and smaller) */
+        /* Text resizing animation */
         @keyframes resize {
             0%, 100% {
                 font-size: 4rem;
@@ -58,7 +56,7 @@
             }
         }
 
-        /* Keyframes for the glowing effect (glow and stop glowing) */
+        /* Text glowing effect */
         @keyframes glow {
             0%, 100% {
                 text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.5);
@@ -67,9 +65,90 @@
                 text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 40px rgba(255, 255, 255, 0.8);
             }
         }
+
+        /* Menu button styling */
+        #menuToggle {
+            position: absolute;
+            right: 10px;
+            top: 20px;
+            background-color: #00ffcc;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 18px;
+            color: black;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        #menuToggle:hover {
+            background-color: #00cc99;
+        }
+
+        /* Side menu styles */
+        #sideMenu {
+            position: fixed;
+            right: -250px; /* Initially hidden */
+            top: 0;
+            width: 250px;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: right 0.5s ease;
+        }
+
+        /* Buttons inside the menu */
+        .menuButton {
+            background-color: #00ffcc;
+            border: none;
+            padding: 15px;
+            margin: 10px;
+            width: 200px;
+            text-align: center;
+            font-size: 16px;
+            color: black;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .menuButton:hover {
+            background-color: #00cc99;
+        }
+
+        /* Open state for the menu */
+        #sideMenu.open {
+            right: 0;
+        }
     </style>
 </head>
 <body>
+
     <h1>RyanLabs</h1>
+
+    <!-- Menu button to toggle the menu -->
+    <button id="menuToggle">☰ Menu</button>
+
+    <!-- Side menu -->
+    <div id="sideMenu">
+        <button class="menuButton">Home</button>
+        <button class="menuButton">About</button>
+        <button class="menuButton">Services</button>
+        <button class="menuButton">Contact</button>
+    </div>
+
+    <script>
+        // JavaScript to toggle the side menu
+        const menuToggle = document.getElementById('menuToggle');
+        const sideMenu = document.getElementById('sideMenu');
+
+        menuToggle.addEventListener('click', () => {
+            sideMenu.classList.toggle('open');
+        });
+    </script>
+
 </body>
 </html>
