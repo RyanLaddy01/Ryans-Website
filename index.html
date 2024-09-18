@@ -175,6 +175,9 @@
         menuButtons.forEach(button => {
             button.addEventListener('click', () => {
                 const menuId = button.getAttribute('data-menu');
+                // Close any open menu
+                slideMenus.forEach(menu => menu.classList.remove('open'));
+                // Open the selected menu
                 document.getElementById(menuId).classList.add('open');
             });
         });
