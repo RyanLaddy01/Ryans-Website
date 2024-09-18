@@ -6,47 +6,56 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>RyanLabs</title>
     <style>
-        /* Basic page setup */
-        body {
+        /* Reset basic page setup */
+        * {
             margin: 0;
             padding: 0;
-            height: 100vh;
-            background: linear-gradient(black, #001f3f); /* Black to dark blue gradient */
-            font-family: 'Arial', sans-serif;
-            overflow: hidden;
+            box-sizing: border-box;
         }
 
-        /* Styling for the "RyanLabs" text */
+        /* Body styling with a dark blue to black gradient */
+        body {
+            height: 100vh;
+            background: linear-gradient(to bottom, #001f3f, black); /* Dark blue to black */
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* "RyanLabs" text animation */
         h1 {
             font-size: 4rem;
-            color: #00ccff; /* Light blue text */
-            position: relative;
-            top: 15vh; /* Higher on the page */
-            left: 55vw; /* Move text more to the right */
+            color: #00ccff;
+            position: absolute;
+            top: 10vh; /* Higher up */
+            left: 50vw;
+            transform: translateX(-50%);
             animation: glow 3s ease-in-out infinite, float 10s ease-in-out infinite, resize 5s ease-in-out infinite;
             text-shadow: 0 0 10px rgba(0, 204, 255, 0.8), 0 0 20px rgba(0, 204, 255, 0.5); /* Light blue glow */
         }
 
-        /* Floating animation for seamless loop */
+        /* Floating effect */
         @keyframes float {
             0% {
-                transform: translate(0px, 0px);
+                transform: translate(-50%, 0);
             }
             25% {
-                transform: translate(10px, -10px);
+                transform: translate(-50%, -10px);
             }
             50% {
-                transform: translate(0px, -20px);
+                transform: translate(-50%, -20px);
             }
             75% {
-                transform: translate(-10px, -10px);
+                transform: translate(-50%, -10px);
             }
             100% {
-                transform: translate(0px, 0px);
+                transform: translate(-50%, 0);
             }
         }
 
-        /* Text resizing animation */
+        /* Resize effect */
         @keyframes resize {
             0%, 100% {
                 font-size: 4rem;
@@ -56,7 +65,7 @@
             }
         }
 
-        /* Text glowing effect */
+        /* Glowing effect */
         @keyframes glow {
             0%, 100% {
                 text-shadow: 0 0 10px rgba(0, 204, 255, 0.8), 0 0 20px rgba(0, 204, 255, 0.5);
@@ -68,41 +77,49 @@
 
         /* Menu button styling */
         .menuButton {
-            background-color: #003366; /* Slightly lighter blue */
+            background-color: #003366; /* Dark blue */
             border: none;
             padding: 15px;
-            margin: 10px;
+            margin: 10px 0;
             width: 200px;
             text-align: center;
             font-size: 16px;
             color: white;
             border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s;
-            position: absolute;
-            left: 10px;
-            top: 20px;
+            transition: background-color 0.3s ease;
+            position: relative;
+            z-index: 1;
         }
 
         .menuButton:hover {
-            background-color: #005580; /* Even lighter blue on hover */
+            background-color: #005580; /* Lighter blue on hover */
+        }
+
+        /* Button container to group buttons */
+        .button-container {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            flex-direction: column;
         }
 
         /* Slide-up menu styles */
         .slideMenu {
             position: fixed;
             left: 0;
-            bottom: -100%; /* Hidden initially */
+            bottom: -100%;
             width: 100%;
-            height: 50%; /* Adjust height as needed */
+            height: 50%;
             background-color: rgba(0, 0, 0, 0.9);
             transition: bottom 0.5s ease;
             color: white;
             display: flex;
-            flex-direction: column;
-            align-items: center;
             justify-content: center;
+            align-items: center;
             padding: 20px;
+            z-index: 0;
         }
 
         /* Menu content styling */
@@ -124,54 +141,64 @@
         .slideMenu.open {
             bottom: 0;
         }
+
+        /* Responsive adjustments */
+        @media screen and (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+
+            .menuButton {
+                width: 150px;
+                font-size: 14px;
+            }
+
+            .slideMenu {
+                height: 60%;
+            }
+        }
     </style>
 </head>
 <body>
 
     <h1>RyanLabs</h1>
 
-    <!-- Menu buttons to trigger the slide-up menu -->
-    <button class="menuButton" data-menu="homeMenu">Home</button>
-    <button class="menuButton" data-menu="aboutMenu" style="top: 80px;">About</button>
-    <button class="menuButton" data-menu="servicesMenu" style="top: 140px;">Services</button>
-    <button class="menuButton" data-menu="contactMenu" style="top: 200px;">Contact</button>
+    <!-- Container for menu buttons -->
+    <div class="button-container">
+        <button class="menuButton" data-menu="homeMenu">Home</button>
+        <button class="menuButton" data-menu="aboutMenu">About</button>
+        <button class="menuButton" data-menu="servicesMenu">Services</button>
+        <button class="menuButton" data-menu="contactMenu">Contact</button>
+    </div>
 
     <!-- Slide-up menus for each button -->
     <div id="homeMenu" class="slideMenu">
         <span class="closeButton">&times;</span>
-        <div class="menuContent">
-            Welcome to the Home section!
-        </div>
+        <div class="menuContent">Welcome to the Home section!</div>
     </div>
 
     <div id="aboutMenu" class="slideMenu">
         <span class="closeButton">&times;</span>
-        <div class="menuContent">
-            Learn more About us!
-        </div>
+        <div class="menuContent">Learn more About us!</div>
     </div>
 
     <div id="servicesMenu" class="slideMenu">
         <span class="closeButton">&times;</span>
-        <div class="menuContent">
-            Explore our Services!
-        </div>
+        <div class="menuContent">Explore our Services!</div>
     </div>
 
     <div id="contactMenu" class="slideMenu">
         <span class="closeButton">&times;</span>
-        <div class="menuContent">
-            Get in touch through the Contact section!
-        </div>
+        <div class="menuContent">Get in touch through the Contact section!</div>
     </div>
 
     <script>
-        // JavaScript to handle the slide-up menu and close button functionality
+        // Handle menu button clicks to open/close slide-up menus
         const menuButtons = document.querySelectorAll('.menuButton');
         const slideMenus = document.querySelectorAll('.slideMenu');
         const closeButtons = document.querySelectorAll('.closeButton');
 
-        // Function to open the appropriate menu
+        // Open menu function
         menuButtons.forEach(button => {
             button.addEventListener('click', () => {
                 const menuId = button.getAttribute('data-menu');
@@ -182,7 +209,7 @@
             });
         });
 
-        // Function to close the menu when the "X" is clicked
+        // Close menu function
         closeButtons.forEach(button => {
             button.addEventListener('click', () => {
                 button.parentElement.classList.remove('open');
