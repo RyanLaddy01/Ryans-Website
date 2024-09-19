@@ -24,6 +24,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            position: relative;
         }
 
         /* "RyanLabs" text animation */
@@ -32,7 +33,7 @@
             color: #00ccff; /* Light blue color */
             position: absolute;
             top: 12vh; /* Position it higher */
-            left: 50vw;
+            right: 20vw;
             transform: translateX(-50%);
             animation: glow 3s ease-in-out infinite, float 10s ease-in-out infinite, resize 5s ease-in-out infinite;
             text-shadow: 0 0 10px rgba(0, 204, 255, 0.8), 0 0 20px rgba(0, 204, 255, 0.5); /* Light blue glow */
@@ -74,6 +75,26 @@
             }
             50% {
                 text-shadow: 0 0 20px rgba(0, 204, 255, 1), 0 0 40px rgba(0, 204, 255, 0.8);
+            }
+        }
+
+        /* SpongeBob Image Styling */
+        .logo {
+            position: absolute;
+            top: 10vh;
+            right: 5vw;
+            width: 150px; /* Adjust size of the image */
+            height: auto;
+            animation: bounce 4s ease-in-out infinite;
+        }
+
+        /* Bouncing effect for SpongeBob image */
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
             }
         }
 
@@ -165,6 +186,9 @@
 <body>
 
     <h1>RyanLabs</h1>
+    
+    <!-- SpongeBob Image -->
+    <img src="Sponge%20Bob.jpg" alt="SpongeBob Logo" class="logo">
 
     <!-- Container for menu buttons -->
     <div class="button-container">
